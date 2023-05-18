@@ -17,10 +17,10 @@ Move frame to one of 9 grids in screen.
 Or
 
 ```elisp
-
 (use-package nine-grid
   :load-path "~/.emacs.d/site-lisp/nine-grid"
   :config
+  (require 'nine-grid)
   (nine-grid-mode))
 ```
 
