@@ -97,7 +97,7 @@
   "Minor mode to move frame to one of nine grids.
 \\{nine-grid-minor-mode-map}"
   :init-value nil
-  :lighter " 9grid"
+  :lighter " 9g"
   :keymap nine-grid-minor-mode-map)
 
 ;;;###autoload

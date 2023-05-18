@@ -4,6 +4,8 @@ Move frame to one of 9 grids in screen.
 
 ## Demo
 
+![](./nine-grid-demo.gif)
+
 ## Installation
 
 ```elisp
