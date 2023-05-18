@@ -35,20 +35,26 @@
 ;;; Code:
 
 (defun nine-grid-set-frame (top left height width)
+  "Set frame parameter.
+`TOP' top from screen, `LEFT' from screen, `HEIGHT' of the frame,
+`WIDTH' of the frame."
   (let ((frame (selected-frame)))
     (set-frame-position frame left top)
     (set-frame-height frame height)
     (set-frame-width frame width)))
 
 (defun nine-grid-screen-width ()
+  "Calculate width of the screen in char counts."
   (/ (display-pixel-width)
      (frame-char-width)))
 
 (defun nine-grid-screen-height ()
+  "Calculate height of the screen in char counts."
   (/ (display-pixel-height)
      (frame-char-height)))
 
 (defun nine-grid-xy (x y)
+  "Move frame to one of the grid denoted by `X' and `Y'."
   (interactive)
   (when window-system
     ;; top, left ... must be integer
@@ -60,6 +66,7 @@
        top left height width))))
 
 (defun nine-grid (&optional n)
+  "Move frame to the slot denoted by `N'."
   (interactive)
   (let ((n (or n 5)))
     (let* ((x (mod (1- n) 3))
@@ -67,6 +74,8 @@
       (nine-grid-xy x y))))
 
 (defun nine-grid-0 ()
+  "Move frame to middle of the screen.
+It occupies 80% of screen width and height."
   (interactive)
   (when window-system
     ;; top, left ... must be integer
@@ -101,7 +110,7 @@
   :keymap nine-grid-minor-mode-map)
 
 ;;;###autoload
-(defun turn-on-nine-grid-minor-mode ()
+(defun nine-grid-turn-on-minor-mode ()
   "Turn on `nine-grid-minor-mode'."
   (interactive)
   (nine-grid-minor-mode +1))
@@ -109,7 +118,7 @@
 ;;;###autoload
 (define-globalized-minor-mode nine-grid-mode
   nine-grid-minor-mode
-  turn-on-nine-grid-minor-mode)
+  nine-grid-turn-on-minor-mode)
 
 (provide 'nine-grid)
 
