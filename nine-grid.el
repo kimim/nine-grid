@@ -86,6 +86,13 @@ It occupies 80% of screen width and height."
       (nine-grid-set-frame
        top left height width))))
 
+(defun nine-grid-new-frame (&optional n)
+  "Create a frame and move to slot denoted by `N'."
+  (interactive)
+  (when window-system
+    (with-selected-frame (make-frame)
+      (nine-grid n))))
+
 (defvar nine-grid-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-x y 0") #'nine-grid-0)
@@ -98,6 +105,15 @@ It occupies 80% of screen width and height."
     (define-key map (kbd "C-x y 7") (lambda () (interactive) (nine-grid 7)))
     (define-key map (kbd "C-x y 8") (lambda () (interactive) (nine-grid 8)))
     (define-key map (kbd "C-x y 9") (lambda () (interactive) (nine-grid 9)))
+    (define-key map (kbd "C-x 7 1") (lambda () (interactive) (nine-grid-new-frame 1)))
+    (define-key map (kbd "C-x 7 2") (lambda () (interactive) (nine-grid-new-frame 2)))
+    (define-key map (kbd "C-x 7 3") (lambda () (interactive) (nine-grid-new-frame 3)))
+    (define-key map (kbd "C-x 7 4") (lambda () (interactive) (nine-grid-new-frame 4)))
+    (define-key map (kbd "C-x 7 5") (lambda () (interactive) (nine-grid-new-frame 5)))
+    (define-key map (kbd "C-x 7 6") (lambda () (interactive) (nine-grid-new-frame 6)))
+    (define-key map (kbd "C-x 7 7") (lambda () (interactive) (nine-grid-new-frame 7)))
+    (define-key map (kbd "C-x 7 8") (lambda () (interactive) (nine-grid-new-frame 8)))
+    (define-key map (kbd "C-x 7 9") (lambda () (interactive) (nine-grid-new-frame 9)))
     map)
   "Keymap for `nine-grid-minor-mode'.")
 
